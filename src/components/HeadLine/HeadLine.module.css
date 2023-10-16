@@ -1,14 +1,56 @@
+.headLineContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 400px;
+}
 .headLine {
   display: flex;
   align-items: center;
-  justify-content: center;
-  
   width: 80vw;
-  height: 30vh;
+  gap: 4rem;
 }
 
+.headLine img {
+  border-radius: 2px;
+  border: 1px solid rgba(0, 0, 0, 0.20);
+  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  flex-shrink: 0;
+}
+
+.title > span {
+  color:#C31815;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 210%; /* 29.4px */
+  letter-spacing: 0.28px;
+  margin-bottom: 10px;
+}
 .title h1 {
-  margin-right: 1rem;
-  font-size: 2.5em;
-  line-height: 1.1;  
+  color:#2A2A2A;
+  font-family: IBM Plex Serif;
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 30px;
+}
+
+.title > p {
+  color:#2A2A2A;
+  font-family: Poppins;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 165%; /* 24.75px */
+  margin-bottom: 20px;
+}
+
+.infos {
+  display: flex;
+  justify-content: space-between;
 }
