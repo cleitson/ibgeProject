@@ -1,0 +1,43 @@
+.inputsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+}
+
+.inputsItens{
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+.itens {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  gap: 20px;
+  margin-left: 20px;
+}
+
+.btn {
+  margin-right: 20px;
+}
+
+input[type="checkbox"] {
+  display: none;
+}
+
+:checked + label {
+ border-bottom: 2px solid #C31815;
+}
+
+
+button {
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}

@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 100vw;
   height: 400px;
+  margin-bottom: 50px;
 }
 .headLine {
   display: flex;
@@ -12,10 +13,9 @@
   gap: 4rem;
 }
 
-.headLine img {
+.headLine > img {
   border-radius: 2px;
   border: 1px solid rgba(0, 0, 0, 0.20);
-  background: url(<path-to-image>), lightgray 50% / cover no-repeat;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   flex-shrink: 0;
 }

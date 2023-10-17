@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-import { ApiType } from '../types';
+import { useEffect, useMemo, useState } from 'react';
+import { ApiItemType, ApiType, SelectNewsType } from '../types';
 import ApiContext from './ApiContext';
 
 type ContextProviderProps = {
@@ -9,21 +9,50 @@ type ContextProviderProps = {
 function ApiContextProvider({ children }: ContextProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [apiData, setApiData] = useState<ApiType>({} as ApiType);
+  const [newsSelected, setNewsSelected] = useState<SelectNewsType>('recentes');
+  const [styleSelected, setStyleSelected] = useState<boolean>(true);
+  const [dataSelected, setDataSelected] = useState<ApiItemType[]>();
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setNewsSelected(value as SelectNewsType);
+  };
+  const toggleView = () => {
+    setStyleSelected((prevState) => !prevState);
+  };
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
       const response = await fetch('https://servicodados.ibge.gov.br/api/v3/noticias/?qtd=100');
       const data = await response.json();
-      console.log(data);
       setApiData(data);
       setLoading(false);
     }
     fetchData();
   }, []);
-
+  useMemo(() => {
+    const show = () => {
+      if (newsSelected === 'recentes') {
+        const recentes = apiData.items?.slice(1);
+        setDataSelected(recentes);
+      } else if (newsSelected === 'Release') {
+        const release = apiData.items?.filter((item) => item.tipo === 'Release');
+        setDataSelected(release);
+      } else if (newsSelected === 'Notícia') {
+        const noticias = apiData.items?.filter((item) => item.tipo === 'Notícia');
+        setDataSelected(noticias);
+      }
+    };
+    show();
+  }, [newsSelected, apiData]);
   const values = {
     loading,
     apiData,
+    newsSelected,
+    styleSelected,
+    handleChange,
+    toggleView,
+    dataSelected,
   };
 
   return (

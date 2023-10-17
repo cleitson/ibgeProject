@@ -1,6 +1,10 @@
 export type ApiContextType = {
   loading: boolean;
   apiData: ApiType;
+  newsSelected: SelectNewsType
+  handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  toggleView: () => void;
+  dataSelected: ApiItemType[] | undefined;
 };
 
 export type ApiType = {
@@ -28,3 +32,5 @@ export type ApiItemType = {
   destaque: boolean;
   link: string;
 };
+
+export type SelectNewsType = 'recentes' | 'Release' | 'Notícia' | 'favoritas';
