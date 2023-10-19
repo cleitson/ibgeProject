@@ -34,7 +34,8 @@ function ApiContextProvider({ children }: ContextProviderProps) {
         const release = apiData.items?.filter((item) => item.tipo === 'Release');
         setDataSelected(release);
       } else if (newsSelected === 'Notícia') {
-        const noticias = apiData.items?.filter((item) => item.tipo === 'Notícia');
+        const noticias = apiData.items?.filter((item) => item.tipo === 'Notícia')
+          .slice(1);
         setDataSelected(noticias);
       }
     };

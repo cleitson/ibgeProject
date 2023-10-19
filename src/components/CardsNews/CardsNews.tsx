@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import ApiContext from '../../context/ApiContext';
 import style from './CardsNews.module.css';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
@@ -7,12 +7,19 @@ const URL = 'https://agenciadenoticias.ibge.gov.br';
 
 function CardsNews() {
   const { dataSelected, styleSelected, dateToDays } = useContext(ApiContext);
+  const [btnMore, setBtnMore] = useState(true);
+
+  const showMoreItens = () => {
+    setBtnMore((prev) => !prev);
+  };
+
+  const data = btnMore ? dataSelected?.slice(0, 6) : dataSelected;
 
   return (
     <>
       { styleSelected ? (
         <section className={ style.cardsContainerTrue }>
-          { dataSelected?.map((item) => (
+          { data?.map((item) => (
             <div key={ item.id } className={ style.cardItem }>
               <h2>{ item.titulo }</h2>
               <p>{ item.introducao }</p>
@@ -25,12 +32,11 @@ function CardsNews() {
         </section>
       ) : (
         <section className={ style.cardsContainerTrue }>
-          { dataSelected?.map((item) => (
+          { data?.map((item) => (
             <div key={ item.id } className={ style.cardItemList }>
               <img
                 src={ `${URL}/${JSON.parse(item.imagens).image_intro}` }
                 alt={ item.titulo }
-                width={ 200 }
               />
               <div>
 
@@ -45,6 +51,9 @@ function CardsNews() {
           )) }
         </section>
       )}
+      <button onClick={ showMoreItens } className={ style.buttonMore }>
+        <p>{ btnMore ? 'mais noticias' : 'Mostrar menos' }</p>
+      </button>
       { !dataSelected && (<p>Loading...</p>) }
     </>
   );

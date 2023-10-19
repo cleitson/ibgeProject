@@ -24,6 +24,10 @@
 
 .btn {
   padding-right: 20px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+  cursor: pointer;
 }
 
 input[type="checkbox"] {
@@ -34,10 +38,3 @@ input[type="checkbox"] {
  border-bottom: 2px solid #C31815;
 }
 
-
-button {
-  background-color: transparent;
-  border: none;
-  outline: none;
-  cursor: pointer;
-}
