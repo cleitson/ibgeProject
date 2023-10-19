@@ -4,12 +4,12 @@
   font-weight: 400;
   color: black;
   background: #F1F2F3;
-
+  --Text: #2A2A2A;
 }
 
 * {
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
+  box-sizing: border-box;  
 }
 

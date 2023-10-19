@@ -1,4 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
+import moment from 'moment';
 import { ApiItemType, ApiType, SelectNewsType } from '../types';
 import ApiContext from './ApiContext';
 
@@ -13,13 +14,6 @@ function ApiContextProvider({ children }: ContextProviderProps) {
   const [styleSelected, setStyleSelected] = useState<boolean>(true);
   const [dataSelected, setDataSelected] = useState<ApiItemType[]>();
 
-  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { value } = event.target;
-    setNewsSelected(value as SelectNewsType);
-  };
-  const toggleView = () => {
-    setStyleSelected((prevState) => !prevState);
-  };
   useEffect(() => {
     async function fetchData() {
       setLoading(true);
@@ -30,6 +24,7 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     }
     fetchData();
   }, []);
+
   useMemo(() => {
     const show = () => {
       if (newsSelected === 'recentes') {
@@ -45,6 +40,21 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     };
     show();
   }, [newsSelected, apiData]);
+
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    setNewsSelected(value as SelectNewsType);
+  };
+  const toggleView = () => {
+    setStyleSelected((prevState) => !prevState);
+  };
+  function dateToDays(data: string): string {
+    const dataAtual = moment();
+    const dataPassada = moment(data, 'DD/MM/YYYY HH:mm:ss');
+    const diferencaEmDias = dataAtual.diff(dataPassada, 'days');
+    if (diferencaEmDias === 0) return 'Hoje';
+    return `${diferencaEmDias} dias atrás`;
+  }
   const values = {
     loading,
     apiData,
@@ -53,6 +63,7 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     handleChange,
     toggleView,
     dataSelected,
+    dateToDays,
   };
 
   return (

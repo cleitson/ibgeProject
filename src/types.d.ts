@@ -5,6 +5,8 @@ export type ApiContextType = {
   handleChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   toggleView: () => void;
   dataSelected: ApiItemType[] | undefined;
+  styleSelected: boolean;
+  dateToDays: (date: string) => string;
 };
 
 export type ApiType = {

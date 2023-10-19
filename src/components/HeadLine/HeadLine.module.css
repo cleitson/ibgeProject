@@ -2,7 +2,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
   height: 400px;
   margin-bottom: 50px;
 }
@@ -30,7 +29,7 @@
   letter-spacing: 0.28px;
   margin-bottom: 10px;
 }
-.title h1 {
+.title > h1 {
   color:#2A2A2A;
   font-family: IBM Plex Serif;
   font-size: 32px;

@@ -6,7 +6,7 @@ import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
 const URL = 'https://agenciadenoticias.ibge.gov.br';
 
 function HeadLine() {
-  const { apiData } = useContext(ApiContext);
+  const { apiData, dateToDays } = useContext(ApiContext);
   const [headLine, setHeadLine] = useState(apiData.items?.[0]);
   useMemo(() => {
     const head = apiData.items?.[0];
@@ -26,7 +26,7 @@ function HeadLine() {
             <h1>{ headLine.titulo }</h1>
             <p>{ headLine.introducao }</p>
             <div className={ style.infos }>
-              <span>{ headLine.data_publicacao.split(' ')[0] }</span>
+              <span>{ dateToDays(headLine.data_publicacao) }</span>
               <BtnLerNoticia link={ headLine.link } />
             </div>
           </div>
