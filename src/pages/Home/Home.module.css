@@ -1,16 +1,7 @@
-.page {
-  margin: 0;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  min-width: 320px;
-  min-height: 80vh;
-}
 header {
   text-align: center;
   height: 10vh;
   font-size: 48px;
-  margin-bottom: 40px;
   background-color: #0E0E0ED9;
   color: #FFFFFF;
 }

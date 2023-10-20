@@ -1,3 +1,7 @@
+.cardNews{
+  display: flex;
+  flex-direction: column;
+}
 .cardsContainerTrue {
   display: flex;
   flex-flow: row wrap;
@@ -11,14 +15,16 @@
   justify-content: space-around;
   background-color: white;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  padding: 30px;
+  padding: 15px;
   width: 26vw;
   height: 40vh;
+  gap: 20px;
 }
 
 .infos {
   display: flex;
   justify-content: space-between;
+  padding-top: 5px;
 }
 
 .infos > span {
@@ -38,58 +44,37 @@
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   padding: 20px;
   width: 80vw;
-  height: 25vh;
-  gap: 20px;
+  gap: 50px;
 }
 
-.cardItemList > img {
-  width: 20% !important;
-}
-
-
-
-.cardItem > h2 {
+.title {
   color: var(--Text);
   font-family: IBM Plex Serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: 27px;
+  padding-top: 5px;
+
 }
 
-.cardItem > p {
+.paragraph {
   color: var(--Text);
   font-family: Nunito Sans;
   font-size: 15px;
   font-style: normal;
   font-weight: 400;
   line-height: 22px; /* 146.667% */
-}
-.cardItemList > h2 {
-  color: var(--Text);
-  font-family: IBM Plex Serif;
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 27px;
-}
-
-.cardItemList > p {
-  color: var(--Text);
-  font-family: Nunito Sans;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 22px; /* 146.667% */
+  padding-top: 5px;
 }
 
 .buttonMore {
   width: 220px;
   height: 60px;
-  flex-shrink: 0;
   border-radius: 2px;
   border: 1px solid #C31815;
   margin: 30px auto;
+  cursor: pointer;
 }
 
 .buttonMore > p {
@@ -102,4 +87,13 @@
   line-height: 15px; /* 107.143% */
   letter-spacing: 1.6px;
   text-transform: uppercase;
+}
+
+.iconFavorite {
+  display: flex;
+  justify-content: flex-end;
+}
+.iconFavoriteList {
+  display: flex;
+  justify-content: space-between;
 }

@@ -13,6 +13,7 @@ function ApiContextProvider({ children }: ContextProviderProps) {
   const [newsSelected, setNewsSelected] = useState<SelectNewsType>('recentes');
   const [styleSelected, setStyleSelected] = useState<boolean>(true);
   const [dataSelected, setDataSelected] = useState<ApiItemType[]>();
+  const [favorites, setFavorites] = useState<ApiItemType[]>([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -23,6 +24,8 @@ function ApiContextProvider({ children }: ContextProviderProps) {
       setLoading(false);
     }
     fetchData();
+    const storage = JSON.parse(localStorage.getItem('favoriteNews') || '[]');
+    setFavorites(storage);
   }, []);
 
   useMemo(() => {
@@ -37,10 +40,12 @@ function ApiContextProvider({ children }: ContextProviderProps) {
         const noticias = apiData.items?.filter((item) => item.tipo === 'Notícia')
           .slice(1);
         setDataSelected(noticias);
+      } else if (newsSelected === 'favoritas') {
+        setDataSelected(favorites);
       }
     };
     show();
-  }, [newsSelected, apiData]);
+  }, [newsSelected, apiData, favorites]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
@@ -56,6 +61,19 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     if (diferencaEmDias === 0) return 'Hoje';
     return `${diferencaEmDias} dias atrás`;
   }
+
+  const handleClickFavorite = (news: ApiItemType) => {
+    const newsExists = favorites.find((favorite) => favorite.id === news.id);
+    if (!newsExists) {
+      setFavorites([...favorites, news]);
+      localStorage.setItem('favoriteNews', JSON.stringify([...favorites, news]));
+    } else {
+      const newsRemove = favorites.filter((favorite) => favorite.id !== news.id);
+      setFavorites(newsRemove);
+      localStorage.setItem('favoriteNews', JSON.stringify(newsRemove));
+    }
+  };
+
   const values = {
     loading,
     apiData,
@@ -65,6 +83,9 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     toggleView,
     dataSelected,
     dateToDays,
+    favorites,
+    setFavorites,
+    handleClickFavorite,
   };
 
   return (

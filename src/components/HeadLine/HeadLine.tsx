@@ -2,6 +2,7 @@ import { useContext, useMemo, useState } from 'react';
 import ApiContext from '../../context/ApiContext';
 import style from './HeadLine.module.css';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
+import IsFavorite from '../IsFavorite.tsx/IsFavorite';
 
 const URL = 'https://agenciadenoticias.ibge.gov.br';
 
@@ -18,11 +19,14 @@ function HeadLine() {
       { headLine && (
         <div className={ style.headLine }>
           <img
-            src={ `${URL}/${JSON.parse(headLine.imagens).image_intro}` }
+            src={ `${URL}/${JSON.parse(headLine.imagens).image_fulltext}` }
             alt={ headLine.titulo }
           />
           <div className={ style.title }>
-            <span>Notícia mais recente</span>
+            <div className={ style.recentNews }>
+              <span>Notícia mais recente</span>
+              <IsFavorite idNews={ headLine } />
+            </div>
             <h1>{ headLine.titulo }</h1>
             <p>{ headLine.introducao }</p>
             <div className={ style.infos }>
