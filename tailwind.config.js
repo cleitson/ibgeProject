@@ -5,7 +5,17 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: ["Inter", "system-ui", "Avenir", "Helvetica", "Arial", "sans-serif"],
+      title: ["IBM Plex Sans", "sans-serif"],
+      paragraph: ["Nunito", "sans-serif"],
+      other: ["Poppins", "sans-serif"]
+    },
+    extend: {
+      colors: {
+        bgHeader: "#0E0E0ED9"
+      }
+    },
   },
   plugins: [],
 }

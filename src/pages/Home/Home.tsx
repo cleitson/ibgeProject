@@ -5,7 +5,11 @@ import SelectNews from '../../components/SelectNews/SelectNews';
 function Home() {
   return (
     <>
-      <header>IBGE NEWS</header>
+      <header
+        className="bg-bgHeader text-white text-center py-6 mb-10 text-4xl "
+      >
+        IBGE NEWS
+      </header>
       <main>
         <HeadLine />
         <SelectNews />
