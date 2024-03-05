@@ -10,7 +10,7 @@ function Home() {
       >
         IBGE NEWS
       </header>
-      <main className="m-10">
+      <main>
         <HeadLine />
         <SelectNews />
         <CardsNews />
