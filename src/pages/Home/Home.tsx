@@ -6,11 +6,11 @@ function Home() {
   return (
     <>
       <header
-        className="bg-bgHeader text-white text-center py-6 mb-10 text-4xl "
+        className="bg-bgHeader text-white text-center py-6 text-5xl md:mb-12 "
       >
         IBGE NEWS
       </header>
-      <main>
+      <main className="m-10">
         <HeadLine />
         <SelectNews />
         <CardsNews />
