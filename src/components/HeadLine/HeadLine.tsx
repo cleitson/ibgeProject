@@ -17,7 +17,7 @@ function HeadLine() {
   return (
     <section className="md:flex md:justify-center md:items-center md:m-10 h-screen md:h-auto">
       { headLine && (
-        <div className="flex flex-col justify-center items-center md:flex-row">
+        <div className="flex flex-col justify-center items-center md:flex-row md:w-4/5">
           <img
             src={ `${URL}/${JSON.parse(headLine.imagens).image_fulltext}` }
             alt={ headLine.titulo }
