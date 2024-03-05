@@ -1,6 +1,5 @@
 import { useContext, useMemo, useState } from 'react';
 import ApiContext from '../../context/ApiContext';
-import style from './HeadLine.module.css';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
 import IsFavorite from '../IsFavorite.tsx/IsFavorite';
 
@@ -15,21 +14,21 @@ function HeadLine() {
   }, [apiData]);
 
   return (
-    <section className={ style.headLineContainer }>
+    <section>
       { headLine && (
-        <div className={ style.headLine }>
+        <div>
           <img
             src={ `${URL}/${JSON.parse(headLine.imagens).image_fulltext}` }
             alt={ headLine.titulo }
           />
-          <div className={ style.title }>
-            <div className={ style.recentNews }>
+          <div>
+            <div>
               <span>Notícia mais recente</span>
               <IsFavorite idNews={ headLine } />
             </div>
             <h1>{ headLine.titulo }</h1>
             <p>{ headLine.introducao }</p>
-            <div className={ style.infos }>
+            <div>
               <span>{ dateToDays(headLine.data_publicacao) }</span>
               <BtnLerNoticia link={ headLine.link } />
             </div>

@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import styleSvg from '../../assets/styleSvg.svg';
-import style from './SelectNews.module.css';
 import ApiContext from '../../context/ApiContext';
 
 function SelectNews() {
@@ -11,9 +10,9 @@ function SelectNews() {
   } = useContext(ApiContext);
 
   return (
-    <section className={ style.inputsContainer }>
-      <div className={ style.inputsItens }>
-        <div className={ style.itens }>
+    <section>
+      <div>
+        <div>
           <input
             type="checkbox"
             name="recentes"
@@ -51,7 +50,7 @@ function SelectNews() {
           />
           <label htmlFor="favoritas">Favoritas</label>
         </div>
-        <button onClick={ toggleView } className={ style.btn }>
+        <button onClick={ toggleView }>
           <img src={ styleSvg } alt="trocar visual" />
         </button>
       </div>

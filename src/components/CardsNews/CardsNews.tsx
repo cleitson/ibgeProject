@@ -1,6 +1,5 @@
 import { useContext, useState } from 'react';
 import ApiContext from '../../context/ApiContext';
-import style from './CardsNews.module.css';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
 import IsFavorite from '../IsFavorite.tsx/IsFavorite';
 
@@ -17,41 +16,41 @@ function CardsNews() {
   const data = btnMore ? dataSelected?.slice(0, 6) : dataSelected;
 
   return (
-    <section className={ style.cardNews }>
+    <section>
       { styleSelected ? (
-        <section className={ style.cardsContainerTrue }>
+        <section>
           { data?.map((item) => (
-            <div key={ item.id } className={ style.cardItem }>
-              <h2 className={ style.title }>{ item.titulo }</h2>
-              <p className={ style.paragraph }>{ item.introducao }</p>
-              <div className={ style.infos }>
+            <div key={ item.id }>
+              <h2>{ item.titulo }</h2>
+              <p>{ item.introducao }</p>
+              <div>
                 <span>{ dateToDays(item.data_publicacao) }</span>
                 <BtnLerNoticia link={ item.link } />
               </div>
-              <div className={ style.iconFavorite }>
+              <div>
                 <IsFavorite idNews={ item } />
               </div>
             </div>
           )) }
         </section>
       ) : (
-        <section className={ style.cardsContainerTrue }>
+        <section>
           { data?.map((item) => (
-            <div key={ item.id } className={ style.cardItemList }>
+            <div key={ item.id }>
               <img
                 src={ `${URL}/${JSON.parse(item.imagens).image_intro}` }
                 alt={ item.titulo }
                 width={ 300 }
               />
               <div>
-                <div className={ style.iconFavoriteList }>
+                <div>
                   <div>
-                    <h2 className={ style.title }>{ item.titulo }</h2>
+                    <h2>{ item.titulo }</h2>
                   </div>
                   <IsFavorite idNews={ item } />
                 </div>
-                <p className={ style.paragraph }>{ item.introducao }</p>
-                <div className={ style.infos }>
+                <p>{ item.introducao }</p>
+                <div>
                   <span>{ dateToDays(item.data_publicacao) }</span>
                   <BtnLerNoticia link={ item.link } />
                 </div>
@@ -60,7 +59,7 @@ function CardsNews() {
           )) }
         </section>
       )}
-      <button onClick={ showMoreItens } className={ style.buttonMore }>
+      <button onClick={ showMoreItens }>
         <p>{ btnMore ? 'mais noticias' : 'Mostrar menos' }</p>
       </button>
       { !dataSelected && (<p>Loading...</p>) }
