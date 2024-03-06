@@ -6,7 +6,7 @@ function Home() {
   return (
     <>
       <header
-        className="bg-bgHeader text-white text-center py-6 text-5xl md:mb-12 "
+        className="bg-bgHeader text-white text-center py-6 text-5xl font-title"
       >
         IBGE NEWS
       </header>

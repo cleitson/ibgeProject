@@ -15,7 +15,7 @@ function HeadLine() {
   }, [apiData]);
 
   return (
-    <section className="md:flex md:justify-center md:items-center md:m-10 h-screen md:h-auto">
+    <section className="md:flex md:justify-center md:items-center md:mb-10 h-screen md:h-auto">
       { headLine && (
         <div className="flex flex-col justify-center items-center md:flex-row md:w-4/5">
           <img
