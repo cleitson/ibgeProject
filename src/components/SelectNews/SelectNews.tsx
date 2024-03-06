@@ -1,6 +1,5 @@
 import { useContext } from 'react';
 import styleSvg from '../../assets/styleSvg.svg';
-import style from './SelectNews.module.css';
 import ApiContext from '../../context/ApiContext';
 
 function SelectNews() {
@@ -9,11 +8,11 @@ function SelectNews() {
     handleChange,
     toggleView,
   } = useContext(ApiContext);
-
+  const selected = 'border-b-2 border-red-500';
   return (
-    <section className={ style.inputsContainer }>
-      <div className={ style.inputsItens }>
-        <div className={ style.itens }>
+    <section className="flex justify-center items-center mb-12">
+      <div className="flex justify-between bg-white md:w-4/5 pr-4">
+        <div className="flex justify-start items-center w-4/5 h-[50px] gap-5 pl-5">
           <input
             type="checkbox"
             name="recentes"
@@ -21,8 +20,16 @@ function SelectNews() {
             value="recentes"
             checked={ newsSelected === 'recentes' }
             onChange={ handleChange }
+            className="hidden"
           />
-          <label htmlFor="recentes">Mais recentes</label>
+          <label
+            htmlFor="recentes"
+            className={ `cursor-pointer ${
+              newsSelected === 'recentes' ? `${selected}` : ''
+            }` }
+          >
+            Mais recentes
+          </label>
           <input
             type="checkbox"
             name="release"
@@ -30,8 +37,16 @@ function SelectNews() {
             value="Release"
             checked={ newsSelected === 'Release' }
             onChange={ handleChange }
+            className="hidden"
           />
-          <label htmlFor="release">Release</label>
+          <label
+            htmlFor="release"
+            className={ `cursor-pointer ${
+              newsSelected === 'Release' ? `${selected}` : ''
+            }` }
+          >
+            Release
+          </label>
           <input
             type="checkbox"
             name="noticias"
@@ -39,8 +54,16 @@ function SelectNews() {
             value="Notícia"
             checked={ newsSelected === 'Notícia' }
             onChange={ handleChange }
+            className="hidden"
           />
-          <label htmlFor="noticias">Noticias</label>
+          <label
+            htmlFor="noticias"
+            className={ `cursor-pointer ${
+              newsSelected === 'Notícia' ? `${selected}` : ''
+            }` }
+          >
+            Noticias
+          </label>
           <input
             type="checkbox"
             name="favoritas"
@@ -48,10 +71,18 @@ function SelectNews() {
             value="favoritas"
             checked={ newsSelected === 'favoritas' }
             onChange={ handleChange }
+            className="hidden"
           />
-          <label htmlFor="favoritas">Favoritas</label>
+          <label
+            htmlFor="favoritas"
+            className={ `cursor-pointer ${
+              newsSelected === 'favoritas' ? `${selected}` : ''
+            }` }
+          >
+            Favoritas
+          </label>
         </div>
-        <button onClick={ toggleView } className={ style.btn }>
+        <button onClick={ toggleView }>
           <img src={ styleSvg } alt="trocar visual" />
         </button>
       </div>

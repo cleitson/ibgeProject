@@ -1,5 +1,4 @@
 import { useEffect, useMemo, useState } from 'react';
-import moment from 'moment';
 import { ApiItemType, ApiType, SelectNewsType } from '../types';
 import ApiContext from './ApiContext';
 
@@ -11,7 +10,7 @@ function ApiContextProvider({ children }: ContextProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [apiData, setApiData] = useState<ApiType>({} as ApiType);
   const [newsSelected, setNewsSelected] = useState<SelectNewsType>('recentes');
-  const [styleSelected, setStyleSelected] = useState<boolean>(true);
+  const [styleSelected, setStyleSelected] = useState<boolean>(false);
   const [dataSelected, setDataSelected] = useState<ApiItemType[]>();
   const [favorites, setFavorites] = useState<ApiItemType[]>([]);
 
@@ -54,13 +53,6 @@ function ApiContextProvider({ children }: ContextProviderProps) {
   const toggleView = () => {
     setStyleSelected((prevState) => !prevState);
   };
-  function dateToDays(data: string): string {
-    const dataAtual = moment();
-    const dataPassada = moment(data, 'DD/MM/YYYY HH:mm:ss');
-    const diferencaEmDias = dataAtual.diff(dataPassada, 'days');
-    if (diferencaEmDias === 0) return 'Hoje';
-    return `${diferencaEmDias} dias atrás`;
-  }
 
   const handleClickFavorite = (news: ApiItemType) => {
     const newsExists = favorites.find((favorite) => favorite.id === news.id);
@@ -82,7 +74,6 @@ function ApiContextProvider({ children }: ContextProviderProps) {
     handleChange,
     toggleView,
     dataSelected,
-    dateToDays,
     favorites,
     setFavorites,
     handleClickFavorite,
