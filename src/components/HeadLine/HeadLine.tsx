@@ -3,11 +3,12 @@ import { useContext, useMemo, useState } from 'react';
 import ApiContext from '../../context/ApiContext';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
 import IsFavorite from '../IsFavorite.tsx/IsFavorite';
+import dateToDays from '../../utils/dateToDays';
 
 const URL = 'https://agenciadenoticias.ibge.gov.br';
 
 function HeadLine() {
-  const { apiData, dateToDays } = useContext(ApiContext);
+  const { apiData } = useContext(ApiContext);
   const [headLine, setHeadLine] = useState(apiData.items?.[0]);
   useMemo(() => {
     const head = apiData.items?.[0];

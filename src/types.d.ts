@@ -6,7 +6,6 @@ export type ApiContextType = {
   toggleView: () => void;
   dataSelected: ApiItemType[] | undefined;
   styleSelected: boolean;
-  dateToDays: (date: string) => string;
   favorites: ApiItemType[];
   setFavorites: React.Dispatch<React.SetStateAction<ApiItemType[]>>;
   handleClickFavorite: (news: ApiItemType) => void;

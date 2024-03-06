@@ -4,21 +4,25 @@ import { ArrowUpNarrowWide } from 'lucide-react';
 import ApiContext from '../../context/ApiContext';
 import BtnLerNoticia from '../BtnLerNoticia/BtnLerNoticia';
 import IsFavorite from '../IsFavorite.tsx/IsFavorite';
+import dateToDays from '../../utils/dateToDays';
 
 const URL = 'https://agenciadenoticias.ibge.gov.br';
 
 function CardsNews() {
-  const { dataSelected, styleSelected, dateToDays } = useContext(ApiContext);
+  const { dataSelected, styleSelected } = useContext(ApiContext);
   const [btnMore, setBtnMore] = useState(true);
 
   const showMoreItens = () => {
     setBtnMore((prev) => !prev);
+    if (!btnMore) {
+      window.scrollTo(0, 0);
+    }
   };
 
   const data = btnMore ? dataSelected?.slice(0, 6) : dataSelected;
 
   const btnMais = 'flex justify-center items-center w-[220px] h-[60px] border cursor-pointer mx-auto my-[30px] rounded-sm border-solid border-[#C31815]';
-  const btnMenos = 'fixed bottom-4 left-4 px-4 py-2 border cursor-pointer mx-auto my-[30px] rounded-full border-solid border-blue-500 bg-blue-500';
+  const btnMenos = 'fixed bottom-4 left-4 px-4 py-2 cursor-pointer mx-auto my-[30px] rounded-full bg-blue-500';
   return (
     <section className="flex-col p-3">
       { styleSelected ? (
