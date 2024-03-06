@@ -10,7 +10,7 @@ function ApiContextProvider({ children }: ContextProviderProps) {
   const [loading, setLoading] = useState<boolean>(false);
   const [apiData, setApiData] = useState<ApiType>({} as ApiType);
   const [newsSelected, setNewsSelected] = useState<SelectNewsType>('recentes');
-  const [styleSelected, setStyleSelected] = useState<boolean>(true);
+  const [styleSelected, setStyleSelected] = useState<boolean>(false);
   const [dataSelected, setDataSelected] = useState<ApiItemType[]>();
   const [favorites, setFavorites] = useState<ApiItemType[]>([]);
 
