@@ -30,7 +30,6 @@ describe('Home component', () => {
           handleChange: () => {},
           toggleView: () => {},
           dataSelected: news.items,
-          dateToDays: (str: string) => `Mocked ${str}`,
           favorites: [],
           setFavorites: () => {},
           handleClickFavorite: () => {},
