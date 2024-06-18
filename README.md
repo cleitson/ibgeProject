@@ -51,7 +51,7 @@ Para fazer a instalação do projeto:
 
 A página esta funcionado atravez desse <a href="https://ibge-project-two.vercel.app/" target="_blank" rel="noreferrer">Link</a>
 
-![Imgur](https://i.imgur.com/Dsg2LCa.png)
+![Imgur](https://github.com/cleitson/ibgeProject/blob/main/src/assets/IbgeProject.png?raw=true)
 
 
 ## ⏳ Implementações futuras
